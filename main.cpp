@@ -6,5 +6,4 @@ using namespace cv;
 
 int main()
 {
-    cout << "i";
 }
