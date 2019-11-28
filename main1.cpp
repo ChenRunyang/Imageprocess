@@ -10,12 +10,12 @@ using namespace cv;
 class HistogramND
 {
 private:
-    Mat image;                           //‘¥ÕºœÒ
-    int hisSize[1], hisWidth, hisHeight; //÷±∑ΩÕºµƒ¥Û–°,øÌ∂»∫Õ∏ﬂ∂»
-    float range[2];                      //÷±∑ΩÕº»°÷µ∑∂Œß
+    Mat image;                           //源图像
+    int hisSize[1], hisWidth, hisHeight; //大小宽度和高度
+    float range[2];                      //取值范围
     const float *ranges;
-    Mat channelsRGB[3]; //∑÷¿ÎµƒBGRÕ®µ¿
-    MatND outputRGB[3]; // ‰≥ˆ÷±∑ΩÕº∑÷¡ø
+    Mat channelsRGB[3]; //RGB通道
+    MatND outputRGB[3]; // 输出直方图分量
 public:
     HistogramND()
     {
@@ -36,20 +36,20 @@ public:
         return true;
     }
 
-    //∑÷¿ÎÕ®µ¿
+    //分离通道
     void splitChannels()
     {
         split(image, channelsRGB);
     }
 
-    //º∆À„÷±∑ΩÕº
+    //计算直方图
     void getHistogram()
     {
         calcHist(&channelsRGB[0], 1, 0, Mat(), outputRGB[0], 1, hisSize, &ranges);
         calcHist(&channelsRGB[1], 1, 0, Mat(), outputRGB[1], 1, hisSize, &ranges);
         calcHist(&channelsRGB[2], 1, 0, Mat(), outputRGB[2], 1, hisSize, &ranges);
 
-        // ‰≥ˆ∏˜∏ˆbinµƒ÷µ
+        // 输出值
         for (int i = 0; i < hisSize[0]; ++i)
         {
             cout << i << "   B:" << outputRGB[0].at<float>(i);
@@ -58,7 +58,7 @@ public:
         }
     }
 
-    //œ‘ æ÷±∑ΩÕº
+    //显示直方图
     void displayHisttogram()
     {
         Mat rgbHist[3];
@@ -220,7 +220,7 @@ public:
 int main(int argc, char *argv[])
 {
     String path = "demo.jpg";
-    /*HistogramOD hist;                               //µ•Õ®µ¿±‰ªª
+    /*HistogramOD hist;                               
 	HistogramOD det;
 	if (!hist.importImage(path)){
 		cout << "Import Error!" << endl;
