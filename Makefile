@@ -1,4 +1,4 @@
-TARGET = ./main
+TARGET = ./main1
 
 SRCS := $(wildcard ./src/*.cpp ./*.cpp)
 
