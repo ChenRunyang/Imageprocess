@@ -16,6 +16,6 @@
         "editor.insertSpaces": true
     },
     "C_Cpp.default.includePath": [
-        "/usr/local/Cellar/opencv@3/3.4.5_6/include"
+        "/usr/local/Cellar/opencv/4.4.0_1/include/opencv4"
     ]
 }

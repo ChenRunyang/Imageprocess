@@ -25,6 +25,7 @@ Mat bina(Mat src, int k)
     }
     return src1;
 }
+
 Mat logcg(Mat src, float c)
 {
     Mat src1 = src.clone();
@@ -37,7 +38,7 @@ Mat logcg(Mat src, float c)
             src1.at<uchar>(i, j) = c * log(1 + src1.at<uchar>(i, j)) * (255 / log(256));
         }
     }
-    normalize(src1, src1, 0, 255, CV_MINMAX);
+    normalize(src1, src1, 0, 255, CV_CN_MAX);
     return src1;
 }
 
@@ -53,7 +54,7 @@ Mat gamacg(Mat src, float c)
             src1.at<uchar>(i, j) = std::pow(src1.at<uchar>(i, j), c) * (255 / pow(255, c)); //后面(255/pow（255，c）是为了进行归一化处理)
         }
     }
-    normalize(src1, src1, 0, 255, CV_MINMAX);
+    normalize(src1, src1, 0, 255, CV_CN_MAX);
     return src1;
 }
 

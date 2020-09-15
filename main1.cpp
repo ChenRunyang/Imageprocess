@@ -213,11 +213,11 @@ public:
                 img1.image.at<uchar>(i, j) = dmap[image.at<uchar>(i, j)];
             }
         }
-        normalize(img1.image, img1.image, 0, 255, CV_MINMAX);
+        normalize(img1.image, img1.image, 0, 255, CV_CN_MAX);
     }
 };
 
-int main(int argc, char *argv[])
+int main1(int argc, char *argv[])
 {
     String path = "demo.jpg";
     /*HistogramOD hist;                               

@@ -1,3 +1,8 @@
 main函数通过修改每个实验X的mainX()修改为main，再修改Makefile的TARGET文件即可运行
-实验1主要为二项化，对数变换和伽马变换
+注意设置.vscode中的参数，由于我的电脑中的OpenCV版本为OpenCV4，请修改include和lib的参数，另外，还要修改makefile中的CFLAG和LFLAG
+此实验的环境为Mac VSCode.
+实验一主要为二项化，对数变换和伽马变换
 实验二为直方图均衡及直方图统计
+实验三为空域滤波模型实现
+实验四为椒盐噪声及其降噪实现
+实验五为频域滤波器的相关实现
